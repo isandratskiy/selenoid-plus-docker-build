@@ -1,6 +1,6 @@
 start:
 	\
-	docker pull selenoid/vnc_chrome:$(BROWSER_VERSION) && \
+	docker pull selenoid/chrome:$(BROWSER_VERSION) && \
     docker-compose up --build --abort-on-container-exit --force-recreate
 stop:
 	\
