@@ -1,0 +1,15 @@
+{
+  "chrome": {
+    "default": "browser.version",
+    "versions": {
+      "browser.version": {
+        "image": "selenoid/chrome:browser.version",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=512m"
+        }
+      }
+    }
+  }
+}

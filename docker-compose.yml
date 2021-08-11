@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  app-tests:
+    network_mode: bridge
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - "./report:/home/gradle/app/report"
+    command: bash -c "gradle test"
+    links:
+      - selenoid
+
+  selenoid:
+    network_mode: bridge
+    image: aerokube/selenoid:latest-release
+    volumes:
+      - "$PWD:/etc/selenoid"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    command: [
+        "-conf", "/etc/selenoid/browsers.json",
+        "-service-startup-timeout", "3m0s",
+        "-session-attempt-timeout", "3m0s",
+        "-session-delete-timeout", "3m0s",
+        "-timeout", "5m0s"
+    ]
+    ports:
+      - "4444:4444"

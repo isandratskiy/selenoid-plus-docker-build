@@ -1,0 +1,25 @@
+name: Run Tests
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Create browsers config
+        run: make setBrowserVersion
+
+      - name: Start tests
+        run: make start
+
+      - name: Clean up
+        run: make stop
