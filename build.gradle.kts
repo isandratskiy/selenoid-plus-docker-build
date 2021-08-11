@@ -20,6 +20,8 @@ dependencies {
 tasks.test {
     testLogging.showStandardStreams = true
     testLogging.showExceptions = true
+    testLogging.showStackTraces = true
+    testLogging.showCauses = true
     useJUnitPlatform()
 }
 
