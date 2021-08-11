@@ -10,6 +10,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      BROWSER_VERSION: '92.0'
 
     steps:
       - name: Checkout
